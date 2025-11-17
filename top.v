@@ -21,7 +21,7 @@ module top (CLOCK_50, SW, KEY, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, LEDR, PS2_CLK
     inout  wire PS2_CLK;        // DE-series PS/2 Clock
     inout  wire PS2_DAT;        // DE-series PS/2 Data
 
-    keyboard U1 (CLOCK_50, KEY[0], PS2_CLK, PS2_DAT, LEDR, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
+    keyboard U1 (CLOCK_50, KEY[0],SW, PS2_CLK, PS2_DAT, LEDR, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
 
 endmodule
 

@@ -1,15 +1,9 @@
-// Copyright (c) 2020 FPGAcademy
-// Please see license at https://github.com/fpgacademy/DESim
-
-// Protect against undefined nets
 `default_nettype none
+module keyboard (CLOCK_50, KEY,SW, PS2_CLK, PS2_DAT, LEDR, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
 
-// This module uses ps2_clk and ps2_dat to capture the last three bytes of data received 
-// from the PS/2 keyboard. It displays this data on the HEX displays, and also displays the
-// last byte of data received, along with its PARITY bit, on LEDR.
-module keyboard (CLOCK_50, KEY, PS2_CLK, PS2_DAT, LEDR, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
     input wire CLOCK_50;
     input wire [0:0] KEY;
+    input wire [9:0] SW;
     inout wire PS2_CLK, PS2_DAT;
     output wire [9:0] LEDR;       // DE-series LEDs
     output wire [6:0] HEX0;
@@ -18,72 +12,108 @@ module keyboard (CLOCK_50, KEY, PS2_CLK, PS2_DAT, LEDR, HEX0, HEX1, HEX2, HEX3, 
     output wire [6:0] HEX3;
     output wire [6:0] HEX4;       // DE-series HEX displays
     output wire [6:0] HEX5;       // DE-series HEX displays
-
-    wire Resetn, negedge_ps2_clk;
-    reg [32:0] Serial;              // each PS/2 data packet has 11 bits:
-                                    // STOP (1) PARITY d7 d6 d5 d4 d3 d2 d1 d0 START (0)
-    reg prev_ps2_clk;               // ps2_clk value in the previous clock cycle
-
+    assign LEDR[0] = 1'b1;        // Start
+    wire Resetn;
     assign Resetn = KEY[0];
+    wire [23:0] datout;
+
+    
+    get_key gt (CLOCK_50,Resetn,PS2_CLK, PS2_DAT,datout);
+
+
+
+
+    ISTYPE il (datout[7:0],LEDR[1],LEDR[2]);
+
+    hex7seg a (datout[3:0],HEX0);
+    hex7seg b (datout[7:4],HEX1);
+    hex7seg c (datout[11:8],HEX2);
+    hex7seg d (datout[15:12],HEX3);
+    hex7seg e (datout[19:16],HEX4);
+    hex7seg f (datout[23:20],HEX5);
+
+
+
+endmodule
+
+
+module get_key(CLOCK_50,Resetn,PS2_CLK, PS2_DAT,DAT_OUT);
+    input wire CLOCK_50;
+    input wire Resetn;
+    input wire PS2_CLK,PS2_DAT;
+    output wire [23:0] DAT_OUT;
+    reg [32:0] DAT;	// 33-bit data register
+    reg prev_ps2_clk;
+
+    wire negedge_ps2_clk;
 
     always @(posedge CLOCK_50)
         prev_ps2_clk <= PS2_CLK;
-
-    // check when ps2_clk has changed from 1 to 0
     assign negedge_ps2_clk = (prev_ps2_clk & !PS2_CLK);
 
-    always @(posedge CLOCK_50) begin    // specify a 33-bit shift register
-        if (Resetn == 0)
-            Serial <= 33'b0;
+
+
+    always @(posedge CLOCK_50) begin
+        if (Resetn == 0) 
+            DAT <= 11'b00111100000;
+
         else if (negedge_ps2_clk) begin
-            Serial[31:0] <= Serial[32:1];
-            Serial[32] <= PS2_DAT;
+            DAT[31:0] <= DAT[32:1];
+            DAT[32] <= PS2_DAT;
         end
     end
 
-    assign LEDR = Serial[32:23];        // STOP, PARITY, Data for the last byte received
-    hex7seg H0 (Serial[4:1], HEX0);
-    hex7seg H1 (Serial[8:5], HEX1);
-    hex7seg H2 (Serial[15:12], HEX2);
-    hex7seg H3 (Serial[19:16], HEX3);
-    hex7seg H4 (Serial[26:23], HEX4);
-    hex7seg H5 (Serial[30:27], HEX5);
+    assign DAT_OUT[3:0] = DAT[4:1];
+    assign DAT_OUT[7:4] = DAT[8:5];
+    assign DAT_OUT[11:8] = DAT[15:12];
+    assign DAT_OUT[15:12] = DAT[19:16];
+    assign DAT_OUT[19:16] = DAT[26:23];
+    assign DAT_OUT[23:20] = DAT[30:27];
 endmodule
+
+module ISTYPE(KEY_8,FLAG1,FLAG2);
+    input wire [7:0] KEY_8;
+    output reg FLAG1;
+    output reg FLAG2;
+    always @(*) begin
+        FLAG1 = 0;
+        FLAG2 = 0;
+        case (KEY_8)
+            8'h1C, 8'h32, 8'h21, 8'h23, 8'h24, 8'h2B, 
+            8'h34, 8'h33, 8'h43, 8'h3B, 8'h42, 8'h4B,
+            8'h3A, 8'h31, 8'h44, 8'h4D, 8'h15, 8'h2D,
+            8'h1B, 8'h2C, 8'h3C, 8'h2A, 8'h1D, 8'h22,
+            8'h35, 8'h1A:
+                FLAG1 = 1;
+            8'h0C:
+                FLAG2 = 1;
+
+        endcase
+    end
+endmodule
+
 
 module hex7seg (hex, display);
     input wire [3:0] hex;
     output reg [6:0] display;
 
-    /*
-     *       0  
-     *      ---  
-     *     |   |
-     *    5|   |1
-     *     | 6 |
-     *      ---  
-     *     |   |
-     *    4|   |2
-     *     |   |
-     *      ---  
-     *       3  
-     */
     always @ (hex)
-        case (hex)
-            4'h0: display = 7'b1000000;
-            4'h1: display = 7'b1111001;
-            4'h2: display = 7'b0100100;
-            4'h3: display = 7'b0110000;
-            4'h4: display = 7'b0011001;
-            4'h5: display = 7'b0010010;
-            4'h6: display = 7'b0000010;
-            4'h7: display = 7'b1111000;
-            4'h8: display = 7'b0000000;
-            4'h9: display = 7'b0011000;
-            4'hA: display = 7'b0001000;
-            4'hb: display = 7'b0000011;
-            4'hC: display = 7'b1000110;
-            4'hd: display = 7'b0100001;
-            4'hE: display = 7'b0000110;
-            4'hF: display = 7'b0001110;
-        endcase
+    case (hex)
+        4'h0: display = 7'b1000000;
+        4'h1: display = 7'b1111001;
+        4'h2: display = 7'b0100100;
+        4'h3: display = 7'b0110000;
+        4'h4: display = 7'b0011001;
+        4'h5: display = 7'b0010010;
+        4'h6: display = 7'b0000010;
+        4'h7: display = 7'b1111000;
+        4'h8: display = 7'b0000000;
+        4'h9: display = 7'b0011000;
+        4'hA: display = 7'b0001000;
+        4'hb: display = 7'b0000011;
+        4'hC: display = 7'b1000110;
+        4'hd: display = 7'b0100001;
+        4'hE: display = 7'b0000110;
+        4'hF: display = 7'b0001110;
+    endcase
 endmodule

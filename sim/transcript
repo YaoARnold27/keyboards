@@ -1,8 +1,10 @@
 # vsim -pli "C:\DESim\modelsim.vpi" -Lf 220model -Lf altera_mf_ver -Lf verilog -t 1ns -c -do "run -all" tb 
-# Start time: 23:55:45 on Nov 16,2025
+# Start time: 04:13:38 on Nov 17,2025
 # Loading work.tb
 # Loading work.top
-# Loading work.ps2_demo
+# Loading work.keyboard
+# Loading work.get_key
+# Loading work.ISTYPE
 # Loading work.hex7seg
 # Loading work.PS2_keyboard
 # Loading work.ps2_clk_dat
@@ -12,3 +14,10 @@
 # 
 # 
 # Connected to server!
+# GUI has closed the connection
+# ** Note: $finish    : ../tb/tb.v(29)
+#    Time: 430085 us  Iteration: 1  Instance: /tb
+# 
+# Quitting...
+# End time: 04:14:13 on Nov 17,2025, Elapsed time: 0:00:35
+# Errors: 0, Warnings: 0

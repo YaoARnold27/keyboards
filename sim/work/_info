@@ -7,27 +7,88 @@ z2
 !i10e 25
 !i10f 100
 cModel Technology
-Z0 dC:/DESim/demos/verilog/ps2_demo/sim
-vhex7seg
-Z1 !s110 1763355340
+Z0 dC:/Users/study/Documents/QuartusProject/keyboard/sim
+vget_key
+Z1 !s110 1763370817
 !i10b 1
-!s100 kF==M`_[]McSIgg^Czd1D3
-I5lldLolV_4FmaozgjIz>91
+!s100 jIUE7nQ82;GT4`V_edETl0
+IHan;U`Cbz=d;1Q47=VTcE2
 Z2 VDg1SIo80bB@j0V0VzS_@n1
 R0
-Z3 w1744997723
-Z4 8../ps2_demo.v
-Z5 F../ps2_demo.v
-L0 53
+Z3 w1763370737
+Z4 8../keyboard.v
+Z5 F../keyboard.v
+L0 40
 Z6 OV;L;10.5b;63
 r1
 !s85 0
 31
-Z7 !s108 1763355340.000000
-Z8 !s107 ../top.v|../ps2_demo.v|
-Z9 !s90 ../ps2_demo.v|../top.v|
+Z7 !s108 1763370817.000000
+Z8 !s107 ../top.v|../keyboard.v|
+Z9 !s90 ../keyboard.v|../top.v|
 !i113 1
 Z10 tCvgOpt 0
+vhex7seg
+R1
+!i10b 1
+!s100 W2e8ed0`1bW6i8V?@LIkP3
+IUB2e^D[1CUmOT07QK]I8T1
+R2
+R0
+R3
+R4
+R5
+L0 96
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+vISTYPE
+R1
+!i10b 1
+!s100 0b;JWWaj5hF[BT4GkFPnF1
+IMQ[mfnMzFzRgR31m?[4?<0
+R2
+R0
+R3
+R4
+R5
+L0 74
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+n@i@s@t@y@p@e
+vkeyboard
+R1
+!i10b 1
+!s100 E23DGBlE9z3Iozb?2LASU2
+ImALD6j:^2^Mn:VbVoilT]3
+R2
+R0
+R3
+R4
+R5
+L0 2
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
 vps2_clk_dat
 R1
 !i10b 1
@@ -46,26 +107,6 @@ r1
 R7
 Z14 !s107 ../tb/tb.v|../tb/PS2_keyboard.v|
 Z15 !s90 ../tb/PS2_keyboard.v|../tb/tb.v|
-!i113 1
-R10
-vps2_demo
-R1
-!i10b 1
-!s100 =gcTbXgc1IYXFEglOOg^T2
-Il4iAJ<LT][RA=`8LhV?VO1
-R2
-R0
-R3
-R4
-R5
-L0 10
-R6
-r1
-!s85 0
-31
-R7
-R8
-R9
 !i113 1
 R10
 vPS2_keyboard
@@ -112,11 +153,11 @@ R10
 vtop
 R1
 !i10b 1
-!s100 l7Kg9RAJ74Ufk]>M4?G:o3
-IX>M^z:1TDa3SjDb<[igc_1
+!s100 eZ?U11foNZOJN5<RmAP>F0
+I7SO]RHL[azikLIZGg_zIF3
 R2
 R0
-w1744997741
+w1763365181
 8../top.v
 F../top.v
 L0 7
