@@ -1,0 +1,131 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/DESim/demos/verilog/ps2_demo/sim
+vhex7seg
+Z1 !s110 1763355340
+!i10b 1
+!s100 kF==M`_[]McSIgg^Czd1D3
+I5lldLolV_4FmaozgjIz>91
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+R0
+Z3 w1744997723
+Z4 8../ps2_demo.v
+Z5 F../ps2_demo.v
+L0 53
+Z6 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z7 !s108 1763355340.000000
+Z8 !s107 ../top.v|../ps2_demo.v|
+Z9 !s90 ../ps2_demo.v|../top.v|
+!i113 1
+Z10 tCvgOpt 0
+vps2_clk_dat
+R1
+!i10b 1
+!s100 ;QPlBDZSY5KOR4JUT2gD_3
+I25iniZj@6==ZAR`dZY@OE0
+R2
+R0
+Z11 w1741012789
+Z12 8../tb/PS2_keyboard.v
+Z13 F../tb/PS2_keyboard.v
+L0 125
+R6
+r1
+!s85 0
+31
+R7
+Z14 !s107 ../tb/tb.v|../tb/PS2_keyboard.v|
+Z15 !s90 ../tb/PS2_keyboard.v|../tb/tb.v|
+!i113 1
+R10
+vps2_demo
+R1
+!i10b 1
+!s100 =gcTbXgc1IYXFEglOOg^T2
+Il4iAJ<LT][RA=`8LhV?VO1
+R2
+R0
+R3
+R4
+R5
+L0 10
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+vPS2_keyboard
+R1
+!i10b 1
+!s100 SONZ;kR0o]8_XVQ9jP3ez3
+IX6`fRkl9<E2:dE@>JBM<_1
+R2
+R0
+R11
+R12
+R13
+L0 16
+R6
+r1
+!s85 0
+31
+R7
+R14
+R15
+!i113 1
+R10
+n@p@s2_keyboard
+vtb
+R1
+!i10b 1
+!s100 mcFD6NEYI?EDC`=74<4kN2
+I3K^@Qh16PUT[loA[V=F_G2
+R2
+R0
+w1743980597
+8../tb/tb.v
+F../tb/tb.v
+L0 9
+R6
+r1
+!s85 0
+31
+R7
+R14
+R15
+!i113 1
+R10
+vtop
+R1
+!i10b 1
+!s100 l7Kg9RAJ74Ufk]>M4?G:o3
+IX>M^z:1TDa3SjDb<[igc_1
+R2
+R0
+w1744997741
+8../top.v
+F../top.v
+L0 7
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
