@@ -1,0 +1,21 @@
+# vsim -pli "C:\DESim\modelsim.vpi" -Lf 220model -Lf altera_mf_ver -Lf verilog -t 1ns -c -do "run -all" tb 
+# Start time: 05:47:57 on Nov 20,2025
+# Loading work.tb
+# Loading work.top
+# Loading work.keyboard
+# Loading work.get_key
+# Loading work.ISTYPE
+# Loading work.FSM
+# Loading work.hex7seg
+# Loading work.PS2_keyboard
+# Loading work.ps2_clk_dat
+# ** Warning: (vsim-3015) ../keyboard.v(27): [PCDPC] - Port size (8) does not match connection size (24) for port 'DATA'. The port definition is at: ../keyboard.v(104).
+#    Time: 0 ns  Iteration: 0  Instance: /tb/DUT/U1/fsm File: ../keyboard.v
+# ** Warning: (vsim-3015) ../keyboard.v(27): [PCDPC] - Port size (8) does not match connection size (24) for port 'DATA_OUT'. The port definition is at: ../keyboard.v(104).
+#    Time: 0 ns  Iteration: 0  Instance: /tb/DUT/U1/fsm File: ../keyboard.v
+# Loading C:\DESim\modelsim.vpi
+# run -all
+# Time scaling: 0.0001 sim seconds per real-time second
+# 
+# 
+# Connected to server!
