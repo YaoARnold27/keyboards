@@ -7,38 +7,59 @@ z2
 !i10e 25
 !i10f 100
 cModel Technology
-Z0 dC:/Users/study/Documents/QuartusProject/keyboard/sim
-vget_key
-Z1 !s110 1763370817
+Z0 dC:/Users/Study/Documents/QuartusProject/keyboard/sim
+vFSM
+Z1 !s110 1763635555
 !i10b 1
-!s100 jIUE7nQ82;GT4`V_edETl0
-IHan;U`Cbz=d;1Q47=VTcE2
+!s100 ?O4b90AEPUfO8I_D4c>c]3
+I[WQ3Sb_3RPoPoFm2@LSc20
 Z2 VDg1SIo80bB@j0V0VzS_@n1
 R0
-Z3 w1763370737
+Z3 w1763635550
 Z4 8../keyboard.v
 Z5 F../keyboard.v
-L0 40
+L0 104
 Z6 OV;L;10.5b;63
 r1
 !s85 0
 31
-Z7 !s108 1763370817.000000
+Z7 !s108 1763635555.000000
 Z8 !s107 ../top.v|../keyboard.v|
 Z9 !s90 ../keyboard.v|../top.v|
 !i113 1
 Z10 tCvgOpt 0
-vhex7seg
+n@f@s@m
+vget_key
 R1
 !i10b 1
-!s100 W2e8ed0`1bW6i8V?@LIkP3
-IUB2e^D[1CUmOT07QK]I8T1
+!s100 ]<?C2@?O@aif>n5cZh2`A2
+I@<QUjAbk0;5cFzFI1Yl`i1
 R2
 R0
 R3
 R4
 R5
-L0 96
+L0 45
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+vhex7seg
+R1
+!i10b 1
+!s100 SeBMQH@Pd7cXN[=b?FDW[1
+IMgL;BbkU_g]^H`U_?k^QJ0
+R2
+R0
+R3
+R4
+R5
+L0 164
 R6
 r1
 !s85 0
@@ -51,14 +72,14 @@ R10
 vISTYPE
 R1
 !i10b 1
-!s100 0b;JWWaj5hF[BT4GkFPnF1
-IMQ[mfnMzFzRgR31m?[4?<0
+!s100 G[Y7>lRRDMjTa27NVEVcH2
+I^o`]G3U_dWlF>kga`@m6j3
 R2
 R0
 R3
 R4
 R5
-L0 74
+L0 78
 R6
 r1
 !s85 0
@@ -72,8 +93,8 @@ n@i@s@t@y@p@e
 vkeyboard
 R1
 !i10b 1
-!s100 E23DGBlE9z3Iozb?2LASU2
-ImALD6j:^2^Mn:VbVoilT]3
+!s100 8?6S0?g]<f7LcWD3G45I_0
+I3k:Qic8okf0:0n5Sij3Pj1
 R2
 R0
 R3
